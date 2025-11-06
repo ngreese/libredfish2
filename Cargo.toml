@@ -1,20 +1,20 @@
 [package]
-name = "libredfish"
+name = "libredfish2"
 description = "A redfish library.  Useful for querying server hardware"
-authors = ["Chris Holcombe <xfactor973@gmail.com>"]
-repository = "https://github.com/cholcombe973/libredfish"
-documentation = "https://docs.rs/libredfish"
+authors = ["Nathanael G. Reese <nathanaelreese@acm.org>"]
+repository = "https://github.com/ngreese/libredfish2"
+documentation = "https://docs.rs/libredfish2"
 license = "MIT"
-version = "0.1.1"
-edition = "2018"
+version = "0.1.0"
+edition = "2024"
 
 [build-dependencies]
-reqwest = {version = "~0.11", features = ["blocking", "json"] }
-serde_json = "~1.0"
+#reqwest = {version = "~0.11", features = ["blocking", "json"] }
+#serde_json = "~1.0"
 
 [dependencies]
-log = "~0.4"
-reqwest = {version = "~0.11", features = ["blocking", "json"] }
-serde_derive = "~1.0"
-serde = "~1.0"
-serde_json = "~1.0"
+#log = "~0.4"
+#reqwest = {version = "~0.11", features = ["blocking", "json"] }
+#serde_derive = "~1.0"
+#serde = "~1.0"
+#serde_json = "~1.0"
