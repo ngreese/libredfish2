@@ -1,3 +1,7 @@
+//! Common structs, enums, and traits.
+
+use serde::Deserialize;
+
 #[derive(Debug, Deserialize, Clone)]
 pub struct FirmwareCurrent {
     #[serde(rename = "VersionString")]
@@ -137,16 +141,16 @@ impl Status for SomeStatus {
         }
     }
     fn state(&self) -> String {
-        self.state.clone()
+        self.state.to_owned()
     }
 }
 
 impl Status for AllStatus {
     fn health(&self) -> String {
-        self.health.clone()
+        self.health.to_owned()
     }
     fn state(&self) -> String {
-        self.state.clone()
+        self.state.to_owned()
     }
 }
 

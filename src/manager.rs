@@ -1,4 +1,5 @@
 use crate::common::*;
+use serde::Deserialize;
 
 #[derive(Debug, Deserialize, Clone)]
 pub struct ActionsManagerReset {

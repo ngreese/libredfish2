@@ -1,13 +1,10 @@
-#[macro_use]
-extern crate serde_derive;
-
 pub mod common;
 pub mod manager;
 pub mod power;
 pub mod storage;
 pub mod thermal;
 
-use reqwest::{header::HeaderValue, header::ACCEPT, header::CONTENT_TYPE, blocking::Client};
+use reqwest::{blocking::Client, header::ACCEPT, header::CONTENT_TYPE, header::HeaderValue};
 use serde::de::DeserializeOwned;
 
 pub struct Config {
@@ -42,7 +39,7 @@ impl Redfish {
                 .get(&url)
                 .header(ACCEPT, HeaderValue::from_static("application/json"))
                 .header(CONTENT_TYPE, HeaderValue::from_static("application/json"))
-                .basic_auth(&user, self.config.password.as_ref())
+                .basic_auth(user, self.config.password.as_ref())
                 .send()?
                 .error_for_status()?
                 .json()?,
@@ -63,7 +60,7 @@ impl Redfish {
         controller_id: u64,
     ) -> Result<storage::ArrayController, reqwest::Error> {
         let url = format!("Systems/1/SmartStorage/ArrayControllers/{}/", controller_id);
-        let s: storage::ArrayController = self.get(&url)?;
+        let s: storage::ArrayController = self.get(url.as_str())?;
         Ok(s)
     }
     pub fn get_array_controllers(&self) -> Result<storage::ArrayControllers, reqwest::Error> {
@@ -99,7 +96,7 @@ impl Redfish {
         controller_id: u64,
     ) -> Result<storage::SmartArray, reqwest::Error> {
         let url = format!("Systems/1/SmartStorage/ArrayControllers/{}/", controller_id);
-        let s: storage::SmartArray = self.get(&url)?;
+        let s: storage::SmartArray = self.get(url.as_str())?;
         Ok(s)
     }
 
@@ -111,7 +108,7 @@ impl Redfish {
             "Systems/1/SmartStorage/ArrayControllers/{}/LogicalDrives/",
             controller_id
         );
-        let s: storage::LogicalDrives = self.get(&url)?;
+        let s: storage::LogicalDrives = self.get(url.as_str())?;
         Ok(s)
     }
 
@@ -124,7 +121,7 @@ impl Redfish {
             "Systems/1/SmartStorage/ArrayControllers/{}/DiskDrives/{}/",
             controller_id, drive_id,
         );
-        let d: storage::DiskDrive = self.get(&url)?;
+        let d: storage::DiskDrive = self.get(url.as_str())?;
         Ok(d)
     }
 
@@ -136,7 +133,7 @@ impl Redfish {
             "Systems/1/SmartStorage/ArrayControllers/{}/DiskDrives/",
             controller_id
         );
-        let d: storage::DiskDrives = self.get(&url)?;
+        let d: storage::DiskDrives = self.get(url.as_str())?;
         Ok(d)
     }
 
@@ -148,7 +145,7 @@ impl Redfish {
             "Systems/1/SmartStorage/ArrayControllers/{}/StorageEnclosures/",
             controller_id
         );
-        let s: storage::StorageEnclosures = self.get(&url)?;
+        let s: storage::StorageEnclosures = self.get(url.as_str())?;
         Ok(s)
     }
     pub fn get_storage_enclosure(
@@ -160,7 +157,7 @@ impl Redfish {
             "Systems/1/SmartStorage/ArrayControllers/{}/StorageEnclosures/{}/",
             controller_id, enclosure_id,
         );
-        let s: storage::StorageEnclosure = self.get(&url)?;
+        let s: storage::StorageEnclosure = self.get(url.as_str())?;
         Ok(s)
     }
 }

@@ -1,4 +1,6 @@
 use crate::common::*;
+use serde::Deserialize;
+
 pub trait Hardware {
     fn odata_context(&self) -> String;
     fn odata_id(&self) -> String;

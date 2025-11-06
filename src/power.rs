@@ -1,5 +1,5 @@
 use crate::common::*;
-
+use serde::Deserialize;
 #[derive(Debug, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct OemHpSnmppowerthresholdalert {
