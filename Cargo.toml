@@ -1,8 +1,8 @@
 [package]
 name = "libredfish2"
-description = "A redfish library.  Useful for querying server hardware"
+description = "A continuation of libredfish, a redfish library."
 authors = ["Nathanael G. Reese <nathanaelreese@acm.org>"]
-repository = "https://github.com/ngreese/libredfish2"
+repository = "https://gitlab.com/ngreese/libredfish2"
 documentation = "https://docs.rs/libredfish2"
 license = "MIT"
 version = "0.1.0"
