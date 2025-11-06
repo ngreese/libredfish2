@@ -1,0 +1,28 @@
+# Normalize line endings
+*           text=auto eol=lf
+
+# Rust source and common text
+*.rs        text eol=lf diff=rust
+*.toml      text eol=lf
+*.lock      text eol=lf
+*.md        text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.sh        text eol=lf
+
+# Build artifacts / generated (if ever checked in)
+target/**               -diff linguist-generated=true
+# Normalize line endings
+*           text=auto eol=lf
+
+# Rust source and common text
+*.rs        text eol=lf diff=rust
+*.toml      text eol=lf
+*.lock      text eol=lf
+*.md        text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.sh        text eol=lf
+
+# Build artifacts / generated (if ever checked in)
+target/**               -diff linguist-generated=true

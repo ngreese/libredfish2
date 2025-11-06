@@ -1,0 +1,49 @@
+---
+stages:
+  - lint
+  - deps
+  - test
+  - build
+  - publish
+
+include:
+  - project: ngreese/job-templates
+    ref: main
+    file:
+      - templates/rust.yml
+
+format:
+  extends: .cargo_fmt
+
+clippy:
+  extends: .cargo_clippy
+
+geiger:
+  extends: .cargo_geiger
+
+crev:
+  extends: .cargo_crev
+
+audit:
+  extends: .cargo_audit
+
+udeps:
+  extends: .cargo_udeps
+
+tarpaulin:
+  extends: .cargo_tarpaulin
+
+test:
+  extends: .cargo_test
+
+build:
+  extends: .cargo_build
+
+build_release:
+  extends: .cargo_build_release
+
+docs:
+  extends: .cargo_docs
+
+#publish:
+#  extends: .cargo_publish
