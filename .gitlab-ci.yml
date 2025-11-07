@@ -33,8 +33,8 @@ udeps:
 tarpaulin:
   extends: .cargo_tarpaulin
 
-test:
-  extends: .cargo_test
+#test:
+#  extends: .cargo_test
 
 build:
   extends: .cargo_build
@@ -45,5 +45,5 @@ build_release:
 docs:
   extends: .cargo_docs
 
-#publish:
-#  extends: .cargo_publish
+publish:
+  extends: .cargo_publish
