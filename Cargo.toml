@@ -1,6 +1,6 @@
 [package]
 name = "libredfish2"
-description = "A continuation of libredfish, a redfish library."
+description = "A continuation of libredfish, a library to interface with a Redfish endpoint."
 authors = ["Nathanael G. Reese <nathanaelreese@acm.org>"]
 repository = "https://gitlab.com/ngreese/libredfish2"
 documentation = "https://docs.rs/libredfish2"
