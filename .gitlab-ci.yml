@@ -21,6 +21,15 @@ clippy:
 audit:
   extends: .cargo_audit
 
+<<<<<<< HEAD
+=======
+udeps:
+  extends: .cargo_udeps
+
+tarpaulin:
+  extends: .cargo_tarpaulin
+
+>>>>>>> f8bd04eac3ddc6d9bd33059b85a289391ebdb88a
 #test:
 #  extends: .cargo_test
 
@@ -33,5 +42,5 @@ build_release:
 docs:
   extends: .cargo_docs
 
-#publish:
-#  extends: .cargo_publish
+publish:
+  extends: .cargo_publish
