@@ -7,19 +7,28 @@ pub mod thermal;
 use reqwest::{blocking::Client, header::ACCEPT, header::CONTENT_TYPE, header::HeaderValue};
 use serde::de::DeserializeOwned;
 
+/// Struct holding information to interact with a specified endpoint.
 pub struct Config {
+    /// User with access to the endpoint.
     pub user: Option<String>,
+    /// The endpoint to interact with.
     pub endpoint: String,
+    /// Password to access the endpoint, if needed.
     pub password: Option<String>,
+    /// Point that the endpoint is exposed at.
     pub port: Option<u16>,
 }
 
+/// Struct representing a specific host's endpoint to interface with.
 pub struct Redfish {
+    /// The client to interface with.
     pub client: Client,
+    /// The config holding information to access an endpoint.
     pub config: Config,
 }
 
 impl Redfish {
+    /// Constructor of a Redfish struct.
     pub fn new(client: Client, config: Config) -> Self {
         Redfish { client, config }
     }
@@ -54,7 +63,7 @@ impl Redfish {
         };
         Ok(res)
     }
-
+    
     pub fn get_array_controller(
         &self,
         controller_id: u64,

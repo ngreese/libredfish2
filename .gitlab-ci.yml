@@ -18,20 +18,8 @@ format:
 clippy:
   extends: .cargo_clippy
 
-geiger:
-  extends: .cargo_geiger
-
-crev:
-  extends: .cargo_crev
-
 audit:
   extends: .cargo_audit
-
-udeps:
-  extends: .cargo_udeps
-
-tarpaulin:
-  extends: .cargo_tarpaulin
 
 #test:
 #  extends: .cargo_test
@@ -45,5 +33,5 @@ build_release:
 docs:
   extends: .cargo_docs
 
-#publish:
-#  extends: .cargo_publish
+publish:
+  extends: .cargo_publish
