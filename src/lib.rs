@@ -60,17 +60,15 @@ impl Redfish {
         T: DeserializeOwned + ::std::fmt::Debug,
     {
         let url = match self.config.port {
-            Some(p) => {
-                match self.config.api_version {
-                    Some(v) => format!(
-                        "https://{}:{}/{}/{}",
-                        self.config.endpoint,
-                        p,
-                        v.to_string(),
-                        api
-                    ),
-                    None => format!("https://{}:{}/{}", self.config.endpoint, p, api),
-                }
+            Some(p) => match self.config.api_version {
+                Some(v) => format!(
+                    "https://{}:{}/{}/{}",
+                    self.config.endpoint,
+                    p,
+                    v.to_string(),
+                    api
+                ),
+                None => format!("https://{}:{}/{}", self.config.endpoint, p, api),
             },
             None => match self.config.api_version {
                 Some(v) => format!("https://{}/{}/{}", self.config.endpoint, v.to_string(), api),
