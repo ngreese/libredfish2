@@ -1,3 +1,5 @@
+//! A continuation of libredfish, a library to interface with a Redfish endpoint.
+
 pub mod common;
 pub mod manager;
 pub mod power;
