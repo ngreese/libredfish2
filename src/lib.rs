@@ -67,9 +67,9 @@ impl Redfish {
                 }
             },
             None => { 
-            match self.config.api_version {
-                Some(v) => format!("https://{}/{}/{}", self.config.endpoint, v.to_string(), api),
-                None => format!("https://{}/{}", self.config.endpoint, api),
+                match self.config.api_version {
+                    Some(v) => format!("https://{}/{}/{}", self.config.endpoint, v.to_string(), api),
+                    None => format!("https://{}/{}", self.config.endpoint, api),
                 }
             },
         };
