@@ -20,7 +20,7 @@ pub enum ApiVersion {
 impl std::fmt::Display for ApiVersion {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            Self::V1 => write!(f, "redfish/v1").
+            Self::V1 => write!(f, "redfish/v1"),
             Self::V2 => write!(f, "redfish/v2"),
         }
     }
