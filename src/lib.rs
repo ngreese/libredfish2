@@ -7,12 +7,34 @@ pub mod thermal;
 use reqwest::{blocking::Client, header::ACCEPT, header::CONTENT_TYPE, header::HeaderValue};
 use serde::de::DeserializeOwned;
 
+//! Enumerator to represent the API version information.
+#[derive(Default, Copy, Clone, Debug)]
+pub enum ApiVersion {
+    /// Version 1
+    #[default]
+    V1,
+    /// Version 2
+    V2,
+}
+
+impl std::fmt::Display for ApiVersion {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::V1 => write!(f, "redfish/v1").
+            Self::V2 => write!(f, "redfish/v2"),
+        }
+    }
+}
+
 /// Struct holding information to interact with a specified endpoint.
+#[derive(Debug)]
 pub struct Config {
     /// User with access to the endpoint.
     pub user: Option<String>,
     /// The endpoint to interact with.
     pub endpoint: String,
+    /// Version of the endpoint.
+    pub api_version: Option<ApiVersion>,
     /// Password to access the endpoint, if needed.
     pub password: Option<String>,
     /// Point that the endpoint is exposed at.
@@ -38,8 +60,18 @@ impl Redfish {
         T: DeserializeOwned + ::std::fmt::Debug,
     {
         let url = match self.config.port {
-            Some(p) => format!("https://{}:{}/{}", self.config.endpoint, p, api),
-            None => format!("https://{}/{}", self.config.endpoint, api),
+            Some(p) => {
+                    match self.api_version {
+                        Some(v) => format!("https://{}:{}/{}/{}", self.config.endpoint, p, v.to_string(), api),
+                        None => format!("https://{}:{}/{}", self.config.endpoint, p, api),
+                    }
+                },
+            None => { 
+                    match self.api_version {
+                        Some(v) => format!("https://{}/{}/{}", self.config.endpoint, v.to_string(), api),
+                        None => format!("https://{}/{}", self.config.endpoint, api),
+                    }
+                },
         };
 
         let res: T = match &self.config.user {
