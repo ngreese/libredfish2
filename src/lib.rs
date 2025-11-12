@@ -95,7 +95,7 @@ impl Redfish {
         };
         Ok(res)
     }
-    
+
     pub fn get_array_controller(
         &self,
         controller_id: u64,
