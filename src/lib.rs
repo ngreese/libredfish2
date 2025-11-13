@@ -1,3 +1,5 @@
+//! Library to interface with Redfish endpoints. A continuation of libredfish.
+
 pub mod common;
 pub mod manager;
 pub mod power;
@@ -42,6 +44,7 @@ pub struct Config {
 }
 
 /// Struct representing a specific host's endpoint to interface with.
+#[derive(Debug)]
 pub struct Redfish {
     /// The client to interface with.
     pub client: Client,
@@ -61,17 +64,11 @@ impl Redfish {
     {
         let url = match self.config.port {
             Some(p) => match self.config.api_version {
-                Some(v) => format!(
-                    "https://{}:{}/{}/{}",
-                    self.config.endpoint,
-                    p,
-                    v.to_string(),
-                    api
-                ),
+                Some(v) => format!("https://{}:{}/{}/{}", self.config.endpoint, p, v, api),
                 None => format!("https://{}:{}/{}", self.config.endpoint, p, api),
             },
             None => match self.config.api_version {
-                Some(v) => format!("https://{}/{}/{}", self.config.endpoint, v.to_string(), api),
+                Some(v) => format!("https://{}/{}/{}", self.config.endpoint, v, api),
                 None => format!("https://{}/{}", self.config.endpoint, api),
             },
         };
