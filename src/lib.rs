@@ -4,7 +4,13 @@ pub mod power;
 pub mod storage;
 pub mod thermal;
 
-use reqwest::{blocking::Client, header::ACCEPT, header::CONTENT_TYPE, header::HeaderValue};
+#[cfg(feature = "async")]
+use reqwest::Client;
+#[cfg(feature = "blocking")]
+use reqwest::blocking::Client;
+use reqwest::header::ACCEPT;
+use reqwest::header::CONTENT_TYPE;
+use reqwest::header::HeaderValue;
 use serde::de::DeserializeOwned;
 
 /// Enumerator to represent the API version information.
