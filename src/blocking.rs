@@ -58,6 +58,10 @@ impl Redfish {
         Ok(res)
     }
 
+    /// Pulls array controller information.
+    ///
+    /// Uses the `Systems/1/SmartStorage/ArrayControllers/{controller_id}/` endpoint,
+    /// where `controller_id` is a specified ID of the array controller.
     pub fn get_array_controller(
         &self,
         controller_id: u64,
@@ -66,6 +70,8 @@ impl Redfish {
         let s: storage::ArrayController = self.get(uri.as_str())?;
         Ok(s)
     }
+
+    /// Gets all of the array controllers for a LOM host.
     pub fn get_array_controllers(&self) -> Result<storage::ArrayControllers, reqwest::Error> {
         let uri = "Systems/1/SmartStorage/ArrayControllers/";
         let s: storage::ArrayControllers = self.get(uri)?;
@@ -93,7 +99,9 @@ impl Redfish {
         Ok(t)
     }
 
-    /// Query the smart array status from the server
+    /// Query the smart array status from the server for a specified `controller_id`
+    ///
+    /// Uses the `Systems/1/SmartStorage/ArrayControllers/{controller_id}/` API endpoint
     pub fn get_smart_array_status(
         &self,
         controller_id: u64,
@@ -103,6 +111,9 @@ impl Redfish {
         Ok(s)
     }
 
+    /// Gets all of the LUN's configured for a host for a specified `controller_id`.
+    ///
+    /// Uses the `Systems/1/SmartStorage/ArrayControllers/{controller_id}/LogicalDrives/` API endpoint.
     pub fn get_logical_drives(
         &self,
         controller_id: u64,
@@ -115,6 +126,10 @@ impl Redfish {
         Ok(s)
     }
 
+    /// Gets a single physical drive for a host.
+    ///
+    /// Uses the `Systems/1/SmartStorage/ArrayControllers/{controller_id}/DiskDrives/{drive_id}/` API endpoint
+    /// where `drive_id` is the identifier for the drive controlled by the controller of `controller_id`.
     pub fn get_physical_drive(
         &self,
         drive_id: u64,
@@ -128,6 +143,10 @@ impl Redfish {
         Ok(d)
     }
 
+    /// Gets all of the physical drives for a host.
+    ///
+    /// Uses the `Systems/1/SmartStorage/ArrayControllers/{controller_id}/DiskDrives/` API endpoint
+    /// where `drive_id` is the identifier for the drive controlled by the controller of `controller_id`.
     pub fn get_physical_drives(
         &self,
         controller_id: u64,
@@ -140,6 +159,9 @@ impl Redfish {
         Ok(d)
     }
 
+    /// Gets all of the storage enclosures for a specific `controller_id`
+    ///
+    /// Uses the `Systems/1/SmartStorage/ArrayControllers/{controller_id}/StorageEnclosures/` API endpoint
     pub fn get_storage_enclosures(
         &self,
         controller_id: u64,
@@ -151,6 +173,10 @@ impl Redfish {
         let s: storage::StorageEnclosures = self.get(uri.as_str())?;
         Ok(s)
     }
+
+    /// Gets a single storage enclosure for a specific `controller_id`
+    ///
+    /// Uses the `Systems/1/SmartStorage/ArrayControllers/{controller_id}/StorageEnclosures/{enclosure_id}/` API endpoint
     pub fn get_storage_enclosure(
         &self,
         controller_id: u64,
