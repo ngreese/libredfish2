@@ -17,6 +17,11 @@ format:
 
 clippy:
   extends: .cargo_clippy
+  script:
+    - /opt/gitlab/.cargo/bin/cargo clippy --no-default-features --features blocking --quiet --message-format json | /opt/gitlab/.cargo/bin/gitlab-clippy >> gl_clippy.json || true
+    - /opt/gitlab/.cargo/bin/cargo clippy --no-default-features --features async --quiet --message-format json | /opt/gitlab/.cargo/bin/gitlab-clippy >> gl_clippy.json || true
+    - /opt/gitlab/.cargo/bin/cargo clippy -no-default-features --features async --quiet
+    - /opt/gitlab/.cargo/bin/cargo clippy -no-default-features --features blocking --quiet
 
 audit:
   extends: .cargo_audit
@@ -24,13 +29,8 @@ audit:
 #test:
 #  extends: .cargo_test
 
-build:
+cargo_build:
   extends: .cargo_build
-  script:
-    - /opt/gitlab/.cargo/bin/cargo clippy --no-default-features --features blocking --quiet --message-format json | /opt/gitlab/.cargo/bin/gitlab-clippy >> gl_clippy.json
-    - /opt/gitlab/.cargo/bin/cargo clippy --no-default-features --features async --quiet --message-format json | /opt/gitlab/.cargo/bin/gitlab-clippy >> gl_clippy.json
-    - /opt/gitlab/.cargo/bin/cargo clippy -no-default-features --features async --quiet
-    - /opt/gitlab/.cargo/bin/cargo clippy -no-default-features --features blocking --quiet
 
 build_release:
   extends: .cargo_build_release
