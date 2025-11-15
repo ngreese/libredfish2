@@ -1,5 +1,5 @@
 use crate::common::*;
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
 pub trait Hardware {
     fn odata_context(&self) -> String;
