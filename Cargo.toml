@@ -7,7 +7,7 @@ documentation = "https://docs.rs/libredfish2"
 keywords = ["redfish", "http", "LOM"]
 categories = ["hardware-support"]
 license = "MIT"
-version = "0.1.2"
+version = "0.2.0"
 edition = "2024"
 
 [build-dependencies]
