@@ -1,7 +1,7 @@
 use crate::common::*;
-use serde::Deserialize;
+use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct FansOemHp {
     #[serde(flatten)]
@@ -9,13 +9,13 @@ pub struct FansOemHp {
     pub location: String,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct FansOem {
     pub hp: FansOemHp,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct Fan {
     pub current_reading: i64,
@@ -34,7 +34,7 @@ impl Status for Fan {
     }
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct TemperaturesOemHp {
     #[serde(flatten)]
@@ -43,13 +43,13 @@ pub struct TemperaturesOemHp {
     pub location_ymm: i64,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct TemperaturesOem {
     pub hp: TemperaturesOemHp,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct Temperature {
     pub current_reading: i64,
@@ -75,7 +75,7 @@ impl Status for Temperature {
     }
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct Thermal {
     #[serde(flatten)]
