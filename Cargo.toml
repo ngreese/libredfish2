@@ -1,13 +1,13 @@
 [package]
 name = "libredfish2"
-description = "A continuation of libredfish, a library to interface with a Redfish endpoint."
+description = "A continuation of libredfish, a library to interface with Redfish endpoints."
 authors = ["Nathanael G. Reese <nathanaelreese@acm.org>"]
 repository = "https://gitlab.com/ngreese/libredfish2"
 documentation = "https://docs.rs/libredfish2"
 keywords = ["redfish", "http", "LOM"]
 categories = ["hardware-support"]
 license = "MIT"
-version = "0.1.2"
+version = "0.2.0"
 edition = "2024"
 
 [features]
@@ -16,7 +16,6 @@ blocking = ["reqwest/blocking"]
 async = []
 
 [dependencies]
-log = "0.4.28"
 reqwest = { version = "0.12.24", features = ["json"] }
 serde = { version = "1.0.228", features = ["derive"] }
 serde_json = "1.0.145"

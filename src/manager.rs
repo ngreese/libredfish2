@@ -1,25 +1,25 @@
 use crate::common::*;
-use serde::Deserialize;
+use serde::{Serialize, Deserialize};
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct ActionsManagerReset {
     pub target: String,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct Action {
     #[serde(rename = "#Manager.Reset")]
     pub manager_reset: ActionsManagerReset,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct Availableaction {
     pub action: String,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct Commandshell {
     pub connect_types_supported: Vec<String>,
@@ -28,14 +28,14 @@ pub struct Commandshell {
     pub service_enabled: bool,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct OemHpActionshpiloResetToFactoryDefault {
     #[serde(rename = "ResetType@Redfish.AllowableValues")]
     pub reset_type_redfish_allowable_values: Vec<String>,
     pub target: String,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 pub struct OemHpAction {
     #[serde(rename = "#HpiLO.ClearRestApiState")]
     pub hpi_lo_clear_rest_api_state: ActionsManagerReset,
@@ -45,21 +45,21 @@ pub struct OemHpAction {
     pub hpi_lo_i_lo_functionality: ActionsManagerReset,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct OemHpAvailableactionsCapability {
     pub allowable_values: Vec<String>,
     pub property_name: String,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct OemHpAvailableaction {
     pub action: String,
     pub capabilities: Vec<OemHpAvailableactionsCapability>,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct OemHpFederationconfig {
     #[serde(rename = "IPv6MulticastScope")]
@@ -71,7 +71,7 @@ pub struct OemHpFederationconfig {
     pub i_lo_federation_management: String,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct OemHpFirmwareCurrent {
     pub date: String,
@@ -82,13 +82,13 @@ pub struct OemHpFirmwareCurrent {
     pub version_string: String,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct OemHpFirmware {
     pub current: OemHpFirmwareCurrent,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct OemHpLicense {
     pub license_key: String,
@@ -96,7 +96,7 @@ pub struct OemHpLicense {
     pub license_type: String,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct OemHpIloselftestresult {
     pub notes: String,
@@ -113,7 +113,7 @@ impl crate::common::Status for OemHpIloselftestresult {
     }
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct OemHp {
     #[serde(flatten)]
@@ -138,19 +138,19 @@ pub struct OemHp {
     pub links: LinkType,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct Oem {
     pub hp: OemHp,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct Status {
     pub state: String,
 }
 
-#[derive(Debug, Deserialize, Clone)]
+#[derive(Debug, Serialize, Deserialize, Clone)]
 #[serde(rename_all = "PascalCase")]
 pub struct Manager {
     #[serde(flatten)]
