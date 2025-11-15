@@ -24,7 +24,7 @@ audit:
 #test:
 #  extends: .cargo_test
 
-build:
+cargo_build:
   extends: .cargo_build
 
 build_release:
