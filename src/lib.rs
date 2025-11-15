@@ -10,8 +10,6 @@ pub mod power;
 pub mod storage;
 pub mod thermal;
 
-#[cfg(feature = "async")]
-pub use r#async::Redfish;
 #[cfg(feature = "blocking")]
 pub use blocking::Redfish;
 
