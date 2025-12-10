@@ -33,7 +33,7 @@ impl std::fmt::Display for ApiVersion {
 }
 
 /// Struct holding information to interact with a specified endpoint.
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Config {
     /// User with access to the endpoint.
     pub user: Option<String>,
