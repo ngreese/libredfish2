@@ -8,7 +8,7 @@ use reqwest::header::HeaderValue;
 use serde::de::DeserializeOwned;
 
 /// Struct representing a specific host's endpoint to interface with.
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 pub struct Redfish {
     /// The client to interface with.
     pub client: Client,
