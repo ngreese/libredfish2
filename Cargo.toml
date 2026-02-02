@@ -7,7 +7,7 @@ documentation = "https://docs.rs/libredfish2"
 keywords = ["redfish", "http", "LOM"]
 categories = ["hardware-support"]
 license = "MIT"
-version = "0.2.1"
+version = "0.3.0"
 edition = "2024"
 
 [features]
@@ -16,6 +16,6 @@ blocking = ["reqwest/blocking"]
 async = []
 
 [dependencies]
-reqwest = { version = "0.12.24", features = ["json"] }
+reqwest = { version = "0.13.1", features = ["json"] }
 serde = { version = "1.0.228", features = ["derive"] }
-serde_json = "1.0.145"
+serde_json = "1.0.149"
